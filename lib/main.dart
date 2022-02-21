@@ -37,7 +37,7 @@ class WebViewPage extends StatefulWidget {
 }
 
 class _WebViewPageState extends State<WebViewPage> {
-  WebViewController? mController;
+  late WebViewController mController;
 
   @override
   Widget build(BuildContext context) {
@@ -47,21 +47,11 @@ class _WebViewPageState extends State<WebViewPage> {
         leading: IconButton(
             onPressed: () {
               print("back pressed");
-              mController?.canGoBack().then((value) {
+              mController.canGoBack().then((value) {
                 if (value) {
-                  mController?.goBack();
+                  mController.goBack();
                 }
               });
-              // mController?.goBack();
-
-              // if (mController != null) {
-              //   mController.canGoBack().then((value) {
-              //     if (value) {
-              //       mController.goBack();
-              //     }
-              //   });
-              //   // _controller.goBack();
-              // }
             },
             icon: Icon(Icons.arrow_back)),
       ),
