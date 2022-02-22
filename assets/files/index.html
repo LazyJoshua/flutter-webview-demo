@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<body>
+    <div>
+        <label for="i1">自增计数 </label>
+        <input type="text" value="1" id="i1" >
+        <input type="button" value="开始" class="c1" onmouseup="startcount()">
+    </div>
+
+    <br>
+
+    <div>
+        <li onclick="startcount1()">111</li>
+        <li>111</li>
+        <li>111</li>
+        <li>111</li>
+        <button onclick="startcount()">test</button>
+        <br>
+        <button>lalala</button>
+    </div>
+
+</body>
+<script type="text/javascript">
+    var i = 1;
+    var el1 = document.getElementById("i1");
+    function startcount() {
+        i ++ ;
+        el1.value = i;
+    }
+    function startcount1() {
+        i++;
+        el1.value = i;
+    }
+
+</script>
+</html>

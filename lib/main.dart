@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 void main() {
@@ -57,13 +60,25 @@ class _WebViewPageState extends State<WebViewPage> {
       ),
       body: SafeArea(
         child: WebView(
-          initialUrl: "https://www.baidu.com/",
+          // initialUrl: "https://www.baidu.com/",
+          // initialUrl: Uri.dataFromString('assets/files/index.html',
+          //         mimeType: 'text/html', encoding: Encoding.getByName('utf-8'))
+          //     .toString(),
+          initialUrl: '',
           javascriptMode: JavascriptMode.unrestricted,
           onWebViewCreated: (WebViewController controller) {
             mController = controller;
+            loadLocalHtml(controller);
           },
         ),
       ),
     );
+  }
+
+  void loadLocalHtml(WebViewController controller) async {
+    String path = await rootBundle.loadString('assets/files/index.html');
+    controller.loadUrl(Uri.dataFromString(path,
+            mimeType: 'text/html', encoding: Encoding.getByName('utf-8'))
+        .toString());
   }
 }
